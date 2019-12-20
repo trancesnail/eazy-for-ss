@@ -491,16 +491,18 @@ EOF
 function tar_ocserv_install(){
     cd ${Script_Dir}
 #default version  默认版本
-    oc_version=${oc_version:-${Default_oc_version}}
-    [ "$OC_version_latest" = "" ] && {
+#    oc_version=${oc_version:-${Default_oc_version}}
+     oc_version='0.12.5'
+#    [ "$OC_version_latest" = "" ] && {
 #可以换成自己的下载地址
-        oc_version='0.12.5'
-        curl -SOL "https://github.com/fanyueciyuan/ocserv-backup/raw/master/ocserv-$oc_version.tar.xz"
-    } || {
-        wget -c ftp://ftp.infradead.org/pub/ocserv/ocserv-$oc_version.tar.xz
-    }
+#        oc_version='0.12.5'
+#        curl -SOL "https://github.com/fanyueciyuan/ocserv-backup/raw/master/ocserv-$oc_version.tar.xz"
+#    } || {
+#        wget -c ftp://ftp.infradead.org/pub/ocserv/ocserv-$oc_version.tar.xz
+#    }
+	wget -c ftp://ftp.infradead.org/pub/ocserv/ocserv-$oc_version.tar.xz
     tar xvf ocserv-$oc_version.tar.xz
-    rm -rf ocserv-$oc_version.tar.xz
+#    rm -rf ocserv-$oc_version.tar.xz
     cd ocserv-$oc_version
 #0.10.6-fix
     [ "$oc_version" = "0.10.6" ] && {
