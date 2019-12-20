@@ -971,6 +971,7 @@ function surport_Syscodename(){
     [ "$oc_D_V" = "utopic" ] && return 0
     [ "$oc_D_V" = "vivid" ] && return 0
     [ "$oc_D_V" = "wily" ] && return 0
+    [ "$oc_D_V" = "buster" ] && return 0
     #[ "$oc_D_V" = "xenial" ] && return 0
     #TEST NEWER SYS 测试新系统，取消下面一行的注释。
     #[ "$oc_D_V" = "$oc_D_V" ] && return 0
@@ -1007,9 +1008,9 @@ echo "==========================================================================
 
 #ocserv配置文件所在的网络文件夹位置
 #如果fork的话，请修改为自己的网络地址
-NET_OC_CONF_DOC="https://raw.githubusercontent.com/fanyueciyuan/eazy-for-ss/master/ocservauto"
+NET_OC_CONF_DOC="https://github.com/trancesnail/eazy-for-ss/tree/master/ocservauto"
 #推荐的默认版本
-Default_oc_version="0.10.8"
+Default_oc_version="0.12.5"
 #开启分组模式，每位用户都会分配到All组和Route组。
 #All走全局，Route将会绕过大陆。
 #证书以及用户名登录都会采取。
