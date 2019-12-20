@@ -333,12 +333,12 @@ function get_Custom_configuration_2(){
         fast_Default_Ask "$OC_version_latest is the latest,but default version is recommended.Which to choose?" "$Default_oc_version" "oc_version"
     }
 #which port to use for verification 选择验证端口
-    fast_Default_Ask "Which port to use for verification?(Tcp-Port)" "999" "ocserv_tcpport_set"
+    fast_Default_Ask "Which port to use for verification?(Tcp-Port)" "9860" "ocserv_tcpport_set"
 #tcp-port only or not 是否仅仅使用tcp端口，即是否禁用udp
     fast_Default_Ask "Only use tcp-port or not?(y/n)" "n" "only_tcp_port"
 #which port to use for data transmission 选择udp端口 即专用数据传输的udp端口
     if [ "$only_tcp_port" = "n" ]; then
-        fast_Default_Ask "Which port to use for data transmission?(Udp-Port)" "1999" "ocserv_udpport_set"
+        fast_Default_Ask "Which port to use for data transmission?(Udp-Port)" "9860" "ocserv_udpport_set"
     fi
 #boot from the start 是否开机自起
     fast_Default_Ask "Start ocserv when system is started?(y/n)" "y" "ocserv_boot_start"
@@ -494,7 +494,7 @@ function tar_ocserv_install(){
     oc_version=${oc_version:-${Default_oc_version}}
     [ "$OC_version_latest" = "" ] && {
 #可以换成自己的下载地址
-        oc_version='0.10.8'
+        oc_version='0.12.5'
         curl -SOL "https://github.com/fanyueciyuan/ocserv-backup/raw/master/ocserv-$oc_version.tar.xz"
     } || {
         wget -c ftp://ftp.infradead.org/pub/ocserv/ocserv-$oc_version.tar.xz
@@ -653,8 +653,8 @@ _EOF_
 #modify config file 设定相关参数
 function set_ocserv_conf(){
 #default vars
-    ocserv_tcpport_set=${ocserv_tcpport_set:-999}
-    ocserv_udpport_set=${ocserv_udpport_set:-1999}
+    ocserv_tcpport_set=${ocserv_tcpport_set:-9860}
+    ocserv_udpport_set=${ocserv_udpport_set:-9860}
     save_user_vars=${save_user_vars:-n}
     ocserv_boot_start=${ocserv_boot_start:-y}
     only_tcp_port=${only_tcp_port:-n}
@@ -972,6 +972,7 @@ function surport_Syscodename(){
     [ "$oc_D_V" = "vivid" ] && return 0
     [ "$oc_D_V" = "wily" ] && return 0
     [ "$oc_D_V" = "buster" ] && return 0
+    [ "$oc_D_V" = "disco" ] && return 0
     #[ "$oc_D_V" = "xenial" ] && return 0
     #TEST NEWER SYS 测试新系统，取消下面一行的注释。
     #[ "$oc_D_V" = "$oc_D_V" ] && return 0
